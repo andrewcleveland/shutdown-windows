@@ -8,17 +8,19 @@
 	<DocumentationMarkdown>$(MSBuildProjectDirectory)\..\..\..\docs\ApiDocumentation.md</DocumentationMarkdown>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<VersionPrefix>1.0.0</VersionPrefix>
-	<Title>Windows Shutdown</Title>
+	<Title>ShutdownWindows</Title>
 	<Authors>Andrew Cleveland</Authors>
 	<PackageReadmeFile>Readme.md</PackageReadmeFile>
 	<Copyright>Copyright (c) Andrew Cleveland 2023, except where otherwise noted</Copyright>
 	<PackageIcon>ic_fluent_power_28_regular.png</PackageIcon>
 	<RepositoryUrl>https://github.com/andrewcleveland/shutdown-windows</RepositoryUrl>
-	<PackageTags>windows winapi shutdown</PackageTags>
+	<PackageTags>windows shutdown restart</PackageTags>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 	<IncludeSymbols>True</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<Description>A .NET library to initiate a Windows shutdown or restart.</Description>
+	<PackageProjectUrl>https://github.com/andrewcleveland/shutdown-windows</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
