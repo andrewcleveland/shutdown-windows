@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0-windows</TargetFrameworks>
+    <Nullable>enable</Nullable>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <InheritDocEnabled>true</InheritDocEnabled>
+	<DocumentationMarkdown>$(MSBuildProjectDirectory)\..\..\..\docs\ApiDocumentation.md</DocumentationMarkdown>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<VersionPrefix>1.0.0</VersionPrefix>
+	<Title>Windows Shutdown</Title>
+	<Authors>Andrew Cleveland</Authors>
+	<PackageReadmeFile>Readme.md</PackageReadmeFile>
+	<Copyright>Copyright (c) Andrew Cleveland 2023, except where otherwise noted</Copyright>
+	<PackageIcon>ic_fluent_power_28_regular.png</PackageIcon>
+	<RepositoryUrl>https://github.com/andrewcleveland/shutdown-windows</RepositoryUrl>
+	<PackageTags>windows winapi shutdown</PackageTags>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\ic_fluent_power_28_regular.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="[0.3.18-beta, )">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="SauceControl.InheritDoc" Version="[1.3.0, )">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Vsxmd" Version="[1.4.5, )">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

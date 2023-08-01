@@ -1,0 +1,58 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ShutdownWindows="clr-namespace:Cattv.ShutdownWindows;assembly=Cattv.ShutdownWindows"
+        xmlns:WpfTest="clr-namespace:Cattv.ShutdownWindows.Tests.Utilties.WpfTest"
+        xmlns:WpfToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=DotNetProjects.Wpf.Extended.Toolkit"
+        x:Class="WpfTest.MainWindow"
+        mc:Ignorable="d"
+        Title="WpfTest" Height="Auto" Width="350" SizeToContent="Height" ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <WpfTest:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="InputControlStyle" TargetType="Control">
+            <Style.Setters>
+                <Setter Property="Margin" Value="5,5,5,5"/>
+            </Style.Setters>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Message"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Message}" Style="{Binding Mode=OneWay, Source={StaticResource InputControlStyle}}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Delay (seconds)"/>
+            <WpfToolkit:IntegerUpDown Grid.Row="1" Grid.Column="1" Value="{Binding DelaySeconds}" Style="{Binding Mode=OneWay, Source={StaticResource InputControlStyle}}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Force"/>
+            <CheckBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InputControlStyle}" IsChecked="{Binding Force}"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Restart"/>
+            <CheckBox Grid.Row="3" Grid.Column="1" Style="{StaticResource InputControlStyle}" IsChecked="{Binding Restart}"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Reason"/>
+            <ComboBox Grid.Row="4" Grid.Column="1" Style="{StaticResource InputControlStyle}" SelectedItem="{Binding Reason}" ItemsSource="{Binding ReasonList}" IsEditable="True"/>
+        </Grid>
+        <Button Grid.Row="1" Content="Shutdown" Command="{Binding ShutdownCommand}" Margin="5,5,5,5"/>
+        <Button Grid.Row="2" Content="Abort" Command="{Binding AbortCommand}" Margin="5,5,5,5"/>
+        <StatusBar Grid.Row="3">
+            <StatusBarItem Content="{Binding Status, TargetNullValue={}}"/>
+        </StatusBar>
+    </Grid>
+</Window>

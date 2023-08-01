@@ -1,0 +1,10 @@
+SE_SHUTDOWN_NAME
+TOKEN_PRIVILEGES_ATTRIBUTES
+WIN32_ERROR
+AbortSystemShutdown
+AdjustTokenPrivileges
+FormatMessage
+GetCurrentProcess
+InitiateSystemShutdownEx
+LookupPrivilegeValue
+OpenProcessToken
