@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cattv.ShutdownWindows.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cattv.ShutdownWindows.Tests.Utilties.WpfTest", "tests\utilities\Cattv\ShutdownWindows\Tests\Utilities\WpfTest\Cattv.ShutdownWindows.Tests.Utilties.WpfTest.csproj", "{B0319575-3CA4-45E8-8A30-B8ACC8272788}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B6BBD64-F39D-4D80-A95E-FC511FA9D2BC}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
