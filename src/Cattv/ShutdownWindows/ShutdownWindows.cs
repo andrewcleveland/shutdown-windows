@@ -52,23 +52,22 @@ namespace Cattv.ShutdownWindows
             {
                 throw new ArgumentOutOfRangeException(nameof(delay), delay, "Must be zero or greater");
             }
-            using var privilege = ShutdownPrivilege.AcquirePrivilege();
-            unsafe
-            {
-                using var messagePtr = SafeWChar.Create(message);
 
-                var result = PInvoke.InitiateSystemShutdownEx(
-                    new PWSTR(null),
-                    messagePtr.DangerousAsPWSTR(),
-                    (uint)Math.Round(delay.TotalSeconds),
-                    force,
-                    restart,
-                    (SHUTDOWN_REASON)reason
-                    );
-                if (!result)
-                {
-                    ThrowShutdownException("InitiateSystemShutdownEx");
-                }
+            using var privilege = ShutdownPrivilege.AcquirePrivilege();
+
+            using var messagePtr = SafeWChar.Create(message);
+            var result = PInvoke.InitiateSystemShutdownEx(
+                lpMachineName: new PWSTR(),
+                lpMessage: messagePtr.DangerousAsPWSTR(),
+                dwTimeout: (uint)Math.Round(delay.TotalSeconds),
+                bForceAppsClosed: force,
+                bRebootAfterShutdown: restart,
+                dwReason: (SHUTDOWN_REASON)reason
+                );
+
+            if (!result)
+            {
+                ThrowShutdownException("InitiateSystemShutdownEx");
             }
         }
 
