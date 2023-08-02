@@ -46,7 +46,7 @@ namespace Cattv.ShutdownWindows.Internal
             }
         }
 
-        public unsafe void ReleasePrivilege()
+        public void ReleasePrivilege()
         {
             if (_released)
             {
@@ -112,7 +112,7 @@ namespace Cattv.ShutdownWindows.Internal
             return luid;
         }
 
-        private unsafe static TOKEN_PRIVILEGES* ModifyPrivileges(SafeFileHandle processToken, TOKEN_PRIVILEGES tokenPrivileges)
+        private static TOKEN_PRIVILEGES* ModifyPrivileges(SafeFileHandle processToken, TOKEN_PRIVILEGES tokenPrivileges)
         {
             uint bufferLength = 0;
             // first call doesn't change anything, but gives us needed buffer size
