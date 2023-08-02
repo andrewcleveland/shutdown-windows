@@ -55,10 +55,10 @@ namespace Cattv.ShutdownWindows
 
             using var privilege = ShutdownPrivilege.AcquirePrivilege();
 
-            using var messagePtr = SafeWChar.Create(message);
+            using var messagePtr = SafeWStr.Create(message);
             var result = PInvoke.InitiateSystemShutdownEx(
                 lpMachineName: new PWSTR(),
-                lpMessage: messagePtr.DangerousAsPWSTR(),
+                lpMessage: messagePtr.DangerousStr,
                 dwTimeout: (uint)Math.Round(delay.TotalSeconds),
                 bForceAppsClosed: force,
                 bRebootAfterShutdown: restart,

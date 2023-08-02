@@ -4,37 +4,35 @@ using Windows.Win32.Foundation;
 
 namespace Cattv.ShutdownWindows.Internal
 {
-    internal unsafe class SafeWChar : IDisposable
+    internal class SafeWStr : IDisposable
     {
         private bool _disposed;
-        private readonly char* _ptr;
 
-        private SafeWChar(char* ptr)
+        private readonly PWSTR _ptr;
+
+        public PWSTR DangerousStr => _ptr;
+
+        public SafeWStr(PWSTR ptr)
         {
             _ptr = ptr;
         }
 
-        public static SafeWChar Create(string? str)
+        public unsafe static SafeWStr Create(string? str)
         {
             var ptr = (char*)Marshal.StringToHGlobalUni(str);
-            return new SafeWChar(ptr);
+            return new SafeWStr(ptr);
         }
 
-        public PWSTR DangerousAsPWSTR()
-        {
-            return new PWSTR(_ptr);
-        }
-
-        protected virtual void Dispose(bool disposing)
+        protected unsafe virtual void Dispose(bool disposing)
         {
             if (!_disposed)
             {
-                Marshal.FreeHGlobal((IntPtr)_ptr);
+                Marshal.FreeHGlobal((IntPtr)(char*)_ptr);
                 _disposed = true;
             }
         }
 
-        ~SafeWChar()
+        ~SafeWStr()
         {
             Dispose(disposing: false);
         }
